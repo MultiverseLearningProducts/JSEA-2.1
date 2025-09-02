@@ -1,137 +1,201 @@
 #!/bin/bash
 
-# Java Program Structure Basics - Skills Application Test Runner
-# This script runs the comprehensive test suite to assess learner understanding
+# Java Program Structure Basics - Skillable Assessment Script
+# This script validates completion of technical skills assessment tasks
+# Generated from skillable-bash-script-template.sh
 
-set -e  # Exit on any error
+result=false
+feedback=""
+completed_tasks=0
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# Task 1: Complete HelloWorld Program (25 points)
+task1_complete=true
+task1_details=""
 
-# Function to print colored output
-print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
-}
+# Check if HelloWorld.java exists and has required content
+if [[ ! -f "src/main/java/com/skills/java/HelloWorld.java" ]]; then
+    task1_complete=false
+    task1_details+="HelloWorld.java file not found. "
+fi
 
-print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-# Function to check if Java is installed
-check_java() {
-    if ! command -v java &> /dev/null; then
-        print_error "Java is not installed or not in PATH"
-        print_status "Please install Java JDK 8 or higher"
-        exit 1
+# Check if package declaration is present
+if [[ -f "src/main/java/com/skills/java/HelloWorld.java" ]]; then
+    if ! grep -q "package com.skills.java;" "src/main/java/com/skills/java/HelloWorld.java"; then
+        task1_complete=false
+        task1_details+="Package declaration missing. "
     fi
-    
-    JAVA_VERSION=$(java -version 2>&1 | head -n 1 | cut -d'"' -f2)
-    print_success "Java version detected: $JAVA_VERSION"
-}
+fi
 
-# Function to check if Maven is installed
-check_maven() {
-    if ! command -v mvn &> /dev/null; then
-        print_error "Maven is not installed or not in PATH"
-        print_status "Please install Maven 3.6 or higher"
-        exit 1
+# Check if System.out.println statement is present
+if [[ -f "src/main/java/com/skills/java/HelloWorld.java" ]]; then
+    if ! grep -q "System.out.println" "src/main/java/com/skills/java/HelloWorld.java"; then
+        task1_complete=false
+        task1_details+="System.out.println statement missing. "
     fi
-    
-    MAVEN_VERSION=$(mvn --version | head -n 1)
-    print_success "Maven version detected: $MAVEN_VERSION"
-}
+fi
 
-# Function to clean previous builds
-clean_project() {
-    print_status "Cleaning previous builds..."
-    mvn clean -q
-    print_success "Project cleaned successfully"
-}
-
-# Function to compile the project
-compile_project() {
-    print_status "Compiling Java source code..."
-    if mvn compile -q; then
-        print_success "Project compiled successfully"
-    else
-        print_error "Compilation failed"
-        exit 1
+# Check if Javadoc comment is present
+if [[ -f "src/main/java/com/skills/java/HelloWorld.java" ]]; then
+    if ! grep -q "/\*\*" "src/main/java/com/skills/java/HelloWorld.java"; then
+        task1_complete=false
+        task1_details+="Javadoc comment missing. "
     fi
-}
+fi
 
-# Function to run tests
-run_tests() {
-    print_status "Running comprehensive test suite..."
-    echo ""
-    
-    # Run tests with detailed output
-    if mvn test -q; then
-        echo ""
-        print_success "All tests passed successfully! 🎉"
-        print_success "Learner has demonstrated understanding of Java program structure basics"
-    else
-        echo ""
-        print_error "Some tests failed"
-        print_status "Review the test output above for specific issues"
-        print_status "This indicates areas where the learner needs more practice"
-        exit 1
+if $task1_complete; then
+    completed_tasks=$((completed_tasks + 1))
+    feedback+="Task 1: COMPLETED. "
+else
+    feedback+="Task 1: NOT COMPLETED ($task1_details). "
+fi
+
+# Task 2: Implement User Input Program (30 points)
+task2_complete=true
+task2_details=""
+
+# Check if UserInputProgram.java exists
+if [[ ! -f "src/main/java/com/skills/java/UserInputProgram.java" ]]; then
+    task2_complete=false
+    task2_details+="UserInputProgram.java file not found. "
+fi
+
+# Check if Scanner import is present
+if [[ -f "src/main/java/com/skills/java/UserInputProgram.java" ]]; then
+    if ! grep -q "import java.util.Scanner;" "src/main/java/com/skills/java/UserInputProgram.java"; then
+        task2_complete=false
+        task2_details+="Scanner import missing. "
     fi
-}
+fi
 
-# Function to show test summary
-show_summary() {
-    echo ""
-    echo "=========================================="
-    echo "           TEST SUMMARY"
-    echo "=========================================="
-    echo ""
-    echo "Tests cover the following learning objectives:"
-    echo "✓ Class structure and declaration"
-    echo "✓ Main method signature and modifiers"
-    echo "✓ Package organization"
-    echo "✓ Import statements"
-    echo "✓ Code syntax and structure"
-    echo "✓ File naming conventions"
-    echo "✓ Basic compilation and execution"
-    echo ""
-    echo "Total test cases: 8 comprehensive assessments"
-    echo ""
-}
+# Check if Scanner object creation is present
+if [[ -f "src/main/java/com/skills/java/UserInputProgram.java" ]]; then
+    if ! grep -q "Scanner scanner" "src/main/java/com/skills/java/UserInputProgram.java"; then
+        task2_complete=false
+        task2_details+="Scanner object creation missing. "
+    fi
+fi
 
-# Main execution
-main() {
-    echo "=========================================="
-    echo "  Java Program Structure Basics"
-    echo "  Skills Application Test Runner"
-    echo "=========================================="
-    echo ""
-    
-    # Check prerequisites
-    print_status "Checking prerequisites..."
-    check_java
-    check_maven
-    echo ""
-    
-    # Execute test workflow
-    clean_project
-    compile_project
-    run_tests
-    show_summary
-    
-    print_success "Test execution completed successfully!"
-}
+# Check if user input functionality is implemented
+if [[ -f "src/main/java/com/skills/java/UserInputProgram.java" ]]; then
+    if ! grep -q "scanner.nextLine()\|scanner.nextInt()" "src/main/java/com/skills/java/UserInputProgram.java"; then
+        task2_complete=false
+        task2_details+="User input functionality missing. "
+    fi
+fi
 
-# Run main function
-main "$@" 
+if $task2_complete; then
+    completed_tasks=$((completed_tasks + 1))
+    feedback+="Task 2: COMPLETED. "
+else
+    feedback+="Task 2: NOT COMPLETED ($task2_details). "
+fi
+
+# Task 3: Fix Broken Code (25 points)
+task3_complete=true
+task3_details=""
+
+# Check if BrokenCode.java exists
+if [[ ! -f "src/main/java/com/skills/java/BrokenCode.java" ]]; then
+    task3_complete=false
+    task3_details+="BrokenCode.java file not found. "
+fi
+
+# Check if package declaration is corrected
+if [[ -f "src/main/java/com/skills/java/BrokenCode.java" ]]; then
+    if ! grep -q "package com.skills.java;" "src/main/java/com/skills/java/BrokenCode.java"; then
+        task3_complete=false
+        task3_details+="Package declaration not corrected. "
+    fi
+fi
+
+# Check if class is declared as public
+if [[ -f "src/main/java/com/skills/java/BrokenCode.java" ]]; then
+    if ! grep -q "public class BrokenCode" "src/main/java/com/skills/java/BrokenCode.java"; then
+        task3_complete=false
+        task3_details+="Class not declared as public. "
+    fi
+fi
+
+# Check if main method has static modifier
+if [[ -f "src/main/java/com/skills/java/BrokenCode.java" ]]; then
+    if ! grep -q "public static void main" "src/main/java/com/skills/java/BrokenCode.java"; then
+        task3_complete=false
+        task3_details+="Main method missing static modifier. "
+    fi
+fi
+
+if $task3_complete; then
+    completed_tasks=$((completed_tasks + 1))
+    feedback+="Task 3: COMPLETED. "
+else
+    feedback+="Task 3: NOT COMPLETED ($task3_details). "
+fi
+
+# Task 4: Run Tests and Validate (20 points)
+task4_complete=true
+task4_details=""
+
+# Check if test runner scripts exist
+if [[ ! -f "run-tests.sh" ]]; then
+    task4_complete=false
+    task4_details+="run-tests.sh not found. "
+fi
+
+if [[ ! -f "simple-test-runner.sh" ]]; then
+    task4_complete=false
+    task4_details+="simple-test-runner.sh not found. "
+fi
+
+# Check if scripts are executable
+if [[ -f "run-tests.sh" ]] && [[ ! -x "run-tests.sh" ]]; then
+    task4_complete=false
+    task4_details+="run-tests.sh not executable. "
+fi
+
+if [[ -f "simple-test-runner.sh" ]] && [[ ! -x "simple-test-runner.sh" ]]; then
+    task4_complete=false
+    task4_details+="simple-test-runner.sh not executable. "
+fi
+
+# Try to compile Java files to validate syntax
+if [[ -f "src/main/java/com/skills/java/HelloWorld.java" ]] && [[ -f "src/main/java/com/skills/java/UserInputProgram.java" ]] && [[ -f "src/main/java/com/skills/java/BrokenCode.java" ]]; then
+    if ! javac -cp . src/main/java/com/skills/java/*.java 2>/dev/null; then
+        task4_complete=false
+        task4_details+="Java compilation failed - syntax errors present. "
+    fi
+fi
+
+if $task4_complete; then
+    completed_tasks=$((completed_tasks + 1))
+    feedback+="Task 4: COMPLETED. "
+else
+    feedback+="Task 4: NOT COMPLETED ($task4_details). "
+fi
+
+# Set final result
+if [[ $completed_tasks -eq 4 ]]; then
+    result="Correct"
+    feedback="All tasks completed successfully! $feedback"
+else
+    feedback="$completed_tasks out of 4 tasks completed. $feedback"
+fi
+
+# CRITICAL: This line must use "Correct" or "Incorrect" as the result value
+set_activity_result $result "${feedback}"
+
+# Display results to console
+echo "=========================================="
+echo "  Java Program Structure Basics"
+echo "  Skillable Assessment Results"
+echo "=========================================="
+echo ""
+echo "Tasks Completed: $completed_tasks out of 4"
+echo "Result: $result"
+echo "Feedback: $feedback"
+echo ""
+echo "Detailed Task Status:"
+echo "Task 1 (HelloWorld): $($task1_complete && echo "COMPLETED" || echo "NOT COMPLETED")"
+echo "Task 2 (UserInput): $($task2_complete && echo "COMPLETED" || echo "NOT COMPLETED")"
+echo "Task 3 (BrokenCode): $($task3_complete && echo "COMPLETED" || echo "NOT COMPLETED")"
+echo "Task 4 (Testing): $($task4_complete && echo "COMPLETED" || echo "NOT COMPLETED")"
+echo "" 
