@@ -1,43 +1,39 @@
-// This file contains intentional errors for learners to identify and fix
-// TODO: Fix all the errors in this code to make it compile and run correctly
+package com.skills.java;
 
-// TODO: Fix the package declaration (should be: package com.skills.java;)
-package com.skills.java
+import java.util.Scanner;
 
-// TODO: Fix the import statement (should be: import java.util.Scanner;)
-import java.util.Scanner
-
-// TODO: Fix the class declaration (missing 'public' keyword)
-class BrokenCode {
+/**
+ * A corrected version of the broken code exercise.
+ * This program demonstrates proper Java syntax and structure.
+ * Learners should identify and fix all the errors in the original version.
+ */
+public class BrokenCode {
     
-    // TODO: Fix the main method signature (missing 'static' keyword)
-    public void main(String[] args) {
+    /**
+     * The main method - demonstrates basic input/output operations.
+     * Shows proper Java syntax including semicolons, method modifiers, and structure.
+     */
+    public static void main(String[] args) {
         
-        // TODO: Fix the missing semicolon
-        System.out.println("Welcome to the broken code exercise!")
+        // Print welcome message
+        System.out.println("Welcome to the corrected code exercise!");
         
-        // TODO: Fix the Scanner object creation (missing semicolon)
-        Scanner scanner = new Scanner(System.in)
+        // Create Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
         
-        // TODO: Fix the print statement (missing semicolon)
-        System.out.print("Enter a number: ")
+        // Ask user for input
+        System.out.print("Enter a number: ");
         
-        // TODO: Fix the variable declaration (missing semicolon)
-        int number = scanner.nextInt()
+        // Read user input
+        int number = scanner.nextInt();
         
-        // TODO: Fix the calculation (missing semicolon)
-        int result = number * 2
+        // Perform calculation
+        int result = number * 2;
         
-        // TODO: Fix the print statement (missing semicolon)
-        System.out.println("Double of " + number + " is " + result)
+        // Display result
+        System.out.println("Double of " + number + " is " + result);
         
-        // TODO: Fix the missing semicolon
-        scanner.close()
-        
-        // TODO: Add proper Javadoc comment above the class
-        /**
-         * 
-         * 
-         */
+        // Close scanner
+        scanner.close();
     }
 } 

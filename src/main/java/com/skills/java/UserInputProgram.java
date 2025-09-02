@@ -1,43 +1,55 @@
-// TODO: Add package declaration here
-// TODO: Add import statement for Scanner class
+package com.skills.java;
 
-// TODO: Complete the class declaration
-// The class should be public and named UserInputProgram
+import java.util.Scanner;
+
+/**
+ * A program that demonstrates user input and basic calculations in Java.
+ * This program shows the input-process-output pattern commonly used in programming.
+ */
 public class UserInputProgram {
     
-    // TODO: Complete the main method signature
-    // It should be: public static void main(String[] args)
+    /**
+     * The main method - demonstrates user input, processing, and output.
+     * Shows how to use Scanner class for reading user input.
+     */
     public static void main(String[] args) {
         
-        // TODO: Create a Scanner object to read user input
-        // Scanner scanner = new Scanner(System.in);
+        // Create a Scanner object to read user input from the console
+        Scanner scanner = new Scanner(System.in);
         
-        // TODO: Add a comment explaining what this program will do
+        // This program will ask for user's name and age, then calculate birth year
         
-        // TODO: Print a message asking the user to enter their name
+        // Print a message asking the user to enter their name
+        System.out.print("Please enter your name: ");
         
-        // TODO: Read the user's name input using scanner.nextLine()
+        // Read the user's name input using scanner.nextLine()
         // Store it in a String variable called 'name'
+        String name = scanner.nextLine();
         
-        // TODO: Print a message asking the user to enter their age
+        // Print a message asking the user to enter their age
+        System.out.print("Please enter your age: ");
         
-        // TODO: Read the user's age input using scanner.nextInt()
+        // Read the user's age input using scanner.nextInt()
         // Store it in an int variable called 'age'
+        int age = scanner.nextInt();
         
-        // TODO: Calculate the year the user was born (assuming current year is 2024)
+        // Calculate the year the user was born (assuming current year is 2024)
         // Store it in an int variable called 'birthYear'
+        int currentYear = 2024;
+        int birthYear = currentYear - age;
         
-        // TODO: Print a personalized message using the user's input
+        // Print a personalized message using the user's input
         // Format: "Hello [name]! You are [age] years old and were born in [birthYear]."
+        System.out.println("Hello " + name + "! You are " + age + " years old and were born in " + birthYear + ".");
         
-        // TODO: Add a multi-line comment explaining the input-process-output pattern
-        /*
-         * 
-         * 
-         * 
+        /* 
+         * The input-process-output pattern is fundamental in programming:
+         * 1. INPUT: Get data from user or external source
+         * 2. PROCESS: Perform calculations or operations on the data
+         * 3. OUTPUT: Display results or store them for later use
          */
         
-        // TODO: Close the Scanner object to prevent resource leaks
-        // scanner.close();
+        // Close the Scanner object to prevent resource leaks
+        scanner.close();
     }
 } 
